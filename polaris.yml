@@ -1,0 +1,19 @@
+version: "1"
+project:
+  name: ${scm.git.repo}
+  branch: ${scm.git.branch}
+  revision:
+    name: ${scm.git.commit}
+    date: ${scm.git.commit.date}
+capture:
+  build:
+    cleanCommands:
+    - shell: [go, clean]
+    buildCommands:
+    - shell: [go, build]
+analyze:
+  mode: central
+install:
+  coverity:
+    version: default
+serverUrl: https://qa.dev.polaris.synopsys.com
